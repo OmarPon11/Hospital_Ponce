@@ -14,6 +14,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 
 Route::post('/crear_user', [UserController::class, 'store']);
+Route::get('pacientes-ver', [UsuarioController::class, 'index']); 
 
 //Rutas protegidas por sancturm y autenticacion
 Route::middleware('auth:sanctum')->group(function () {
@@ -27,7 +28,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/users/{id}', [UserController::class, 'destroy']); // Para eliminar usuarios
     //crear pacientes
     Route::post('pacientes', [UsuarioController::class, 'store']); // Solo recepcionistas pueden acceder
-    Route::get('pacientes-ver', [UsuarioController::class, 'index']); // Cualquier usuario autenticado
+    //Route::get('pacientes-ver', [UsuarioController::class, 'index']); // Cualquier usuario autenticado
     //Rutas para generar un turno y visualizar
     Route::get('/turnos-ver', [TurnoController::class, 'index']); //pueden ver los turnos todos
     Route::post('/turnos', [TurnoController::class, 'store']); //solo el recepcionista puede generar un turno
